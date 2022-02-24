@@ -2,8 +2,8 @@ prefix ?= /usr/local
 bindir = $(prefix)/bin
 
 build:
-	swift build --product ipatool --configuration release --triple arm64-apple-macosx -Xlinker -weak-lswift_Concurrency
-	swift build --product ipatool --configuration release --triple x86_64-apple-macosx -Xlinker -weak-lswift_Concurrency
+	swift build --product ipatool --configuration release --triple arm64-apple-macosx -Xlinker -weak-lswift_Concurrency -Xlinker -lswift_Concurrency
+	swift build --product ipatool --configuration release --triple x86_64-apple-macosx -Xlinker -weak-lswift_Concurrency -Xlinker -lswift_Concurrency
 	lipo -create -output .build/ipatool .build/arm64-apple-macosx/release/ipatool .build/x86_64-apple-macosx/release/ipatool
 
 install: build
